@@ -6,8 +6,6 @@ name: Python application
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build:
@@ -34,3 +32,6 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Test selenium
+      run: |
+        python manage.py test
