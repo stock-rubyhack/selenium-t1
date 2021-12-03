@@ -12,10 +12,10 @@ from selenium.webdriver.chrome.options import Options
 class Hosttest(LiveServerTestCase):
     
     def testhomepage(self):
-        #---begin of headless setting-----
-        options = Options()
+        #---begin of headless setting for firefox-----
+        options = webdriver.FirefoxOptions()
         options.headless= True
-        driver=webdriver.Chrome(chrome_options=options) 
+        driver=webdriver.Firefox(options=options) 
         #---end of headless setting -----
         # below are for testing with browser, so if we want headless, we need to commmet it out!!!
         # driver = webdriver.Chrome(executable_path="/mnt/hgfs/py_master/v_academy/INTRO_to_selenium/chromedriver")
