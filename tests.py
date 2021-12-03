@@ -18,7 +18,7 @@ class Hosttest(LiveServerTestCase):
         driver=webdriver.Firefox(options=options) 
         #---end of headless setting -----
         # below are for testing with browser, so if we want headless, we need to commmet it out!!!
-        # driver = webdriver.Chrome(executable_path="/mnt/hgfs/py_master/v_academy/INTRO_to_selenium/chromedriver")
+        # driver = webdriver.Chrome(executable_path="./chromedriver")
 
         driver.get(self.live_server_url)
         time.sleep(5)
@@ -26,30 +26,33 @@ class Hosttest(LiveServerTestCase):
 
 
 #eg2
-# class LoginFormTest(LiveServerTestCase):
+ class LoginFormTest(LiveServerTestCase):
 
-#     def testform(self):
-#         #or we should simply do `driver = webdriver.Chrome('./chromedriver')`
-#         driver = webdriver.Chrome(executable_path="/mnt/hgfs/py_master/v_academy/INTRO_to_selenium/chromedriver")
-#         # or we chould use `self.live_server_url`  to replace the string "http://127.0.0.1:8000/"
-#         driver.get('http://127.0.0.1:8000/accounts/login/')
-#         #time.sleep(1)
+     def testform(self):
+         #----mod for headless approach-------
+         options=Options()
+         options.headless=True
+         #----end of mod-----
+         driver = webdriver.Chrome(chrome_options=options)
+         #need to do string concat here as get() method only take single argument of string type   
+         driver.get(('%s%s' % (self.live_server_url, '/accounts/login/')))
+         #time.sleep(1)
         
-#         #identifying/greping the field
-#         user_name = driver.find_element_by_name('username')
-#         user_password = driver.find_element_by_name('password')
+         #identifying/greping the field
+         user_name = driver.find_element_by_name('username')
+         user_password = driver.find_element_by_name('password')
 
-#         time.sleep(1)
+         time.sleep(1)
 
-#         submit = driver.find_element_by_id('submit')
+         submit = driver.find_element_by_id('submit')
 
-#         #sending value to the field variable define above. 
-#         user_name.send_keys('admin')
-#         user_password.send_keys('admin')
+         #sending value to the field variable define above. 
+         user_name.send_keys('admin')
+         user_password.send_keys('admin')
 
-#         #hitting ENTER key on the submit button. 
-#         submit.send_keys(Keys.RETURN)
+         #hitting ENTER key on the submit button. 
+         submit.send_keys(Keys.RETURN)
 
-#         #post-auth, checking if the string 'admin' present in the webpage. 
-#         assert 'User: admin' in driver.page_source
+         #post-auth, checking if the string 'admin' present in the webpage. 
+         assert 'User: admin' in driver.page_source
 
