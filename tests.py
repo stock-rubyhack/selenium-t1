@@ -26,33 +26,33 @@ class Hosttest(LiveServerTestCase):
 
 
 #eg2
- class LoginFormTest(LiveServerTestCase):
+class LoginFormTest(LiveServerTestCase):
 
-     def testform(self):
-         #----mod for headless approach-------
-         options=Options()
-         options.headless=True
-         #----end of mod-----
-         driver = webdriver.Chrome(chrome_options=options)
-         #need to do string concat here as get() method only take single argument of string type   
-         driver.get(('%s%s' % (self.live_server_url, '/accounts/login/')))
-         #time.sleep(1)
+    def testform(self):
+        #----mod for headless approach-------
+        options=Options()
+        options.headless=True
+        #----end of mod-----
+        driver = webdriver.Chrome(chrome_options=options)
+        #need to do string concat here as get() method only take single argument of string type   
+        driver.get(('%s%s' % (self.live_server_url, '/accounts/login/')))
+        #time.sleep(1)
         
-         #identifying/greping the field
-         user_name = driver.find_element_by_name('username')
-         user_password = driver.find_element_by_name('password')
+        #identifying/greping the field
+        user_name = driver.find_element_by_name('username')
+        user_password = driver.find_element_by_name('password')
 
-         time.sleep(1)
+        time.sleep(1)
 
-         submit = driver.find_element_by_id('submit')
+        submit = driver.find_element_by_id('submit')
 
-         #sending value to the field variable define above. 
-         user_name.send_keys('admin')
-         user_password.send_keys('admin')
+        #sending value to the field variable define above. 
+        user_name.send_keys('admin')
+        user_password.send_keys('admin')
 
-         #hitting ENTER key on the submit button. 
-         submit.send_keys(Keys.RETURN)
+        #hitting ENTER key on the submit button. 
+        submit.send_keys(Keys.RETURN)
 
-         #post-auth, checking if the string 'admin' present in the webpage. 
-         assert 'User: admin' in driver.page_source
+        #post-auth, checking if the string 'admin' present in the webpage. 
+        assert 'User: admin' in driver.page_source
 
