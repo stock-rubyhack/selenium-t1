@@ -37,13 +37,13 @@ class LoginFormTest(LiveServerTestCase):
         #need to do string concat here as get() method only take single argument of string type   
         driver.get(('%s%s' % (self.live_server_url, '/accounts/login/')))
         #you need this for headless , as it goes too fast!!
-        time.sleep(1)
+        #time.sleep(1)
         
         #identifying/greping the field
         user_name = driver.find_element_by_name('username')
         user_password = driver.find_element_by_name('password')
 
-        time.sleep(1)
+        #time.sleep(1)
 
         submit = driver.find_element_by_id('submit')
 
