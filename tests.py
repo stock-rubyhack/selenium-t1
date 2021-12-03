@@ -36,7 +36,8 @@ class LoginFormTest(LiveServerTestCase):
         driver = webdriver.Chrome(chrome_options=options)
         #need to do string concat here as get() method only take single argument of string type   
         driver.get(('%s%s' % (self.live_server_url, '/accounts/login/')))
-        #time.sleep(1)
+        #you need this for headless , as it goes too fast!!
+        time.sleep(1)
         
         #identifying/greping the field
         user_name = driver.find_element_by_name('username')
