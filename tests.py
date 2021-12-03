@@ -20,8 +20,8 @@ class Hosttest(LiveServerTestCase):
         # below are for testing with browser, so if we want headless, we need to commmet it out!!!
         # driver = webdriver.Chrome(executable_path="/mnt/hgfs/py_master/v_academy/INTRO_to_selenium/chromedriver")
 
-        driver.get('self.live_server_url')
-        #time.sleep(5)
+        driver.get(self.live_server_url)
+        time.sleep(5)
         assert "Hello, world!" in driver.title
 
 
