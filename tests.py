@@ -21,7 +21,7 @@ class Hosttest(LiveServerTestCase):
         # driver = webdriver.Chrome(executable_path="/mnt/hgfs/py_master/v_academy/INTRO_to_selenium/chromedriver")
 
         driver.get('self.live_server_url')
-        time.sleep(5)
+        #time.sleep(5)
         assert "Hello, world!" in driver.title
 
 
