@@ -54,5 +54,6 @@ class LoginFormTest(LiveServerTestCase):
         submit.send_keys(Keys.RETURN)
 
         #post-auth, checking if the string 'admin' present in the webpage. 
+        print(driver.page_source)
         assert 'User: admin' in driver.page_source
 
